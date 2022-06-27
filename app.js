@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Item = require("./models/items.js");
+const invRoutes = require("./routes/invRoutes.js");
+
 require("dotenv").config();
 
 const app = express();
@@ -19,28 +21,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Index" });
-});
-
-app.get("/create", (req, res) => {
-  res.render("create", { title: "Create Item" });
-});
-
-app.get("/pop", (req, res) => {
-  res.render("tempopulate");
-});
-
-app.post("/create", (req, res) => {
-  const item = new Item(req.body);
-  item
-    .save()
-    .then((response) => {
-      console.log(response);
-      res.redirect("/create");
-    })
-    .catch((err) => console.log(err));
-});
+app.use("/", invRoutes);
 
 app.use((req, res) => {
   res.status(404).render("404", { title: "Page not Found" });

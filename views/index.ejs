@@ -11,11 +11,17 @@
 	<div>
 		<div class="list">
 			<h2>Items</h2>
+			<div>
+				<% if(items) { %>
+					<% items.map((item) => { %>
+						<h2><%= item.itemName %></h2>
+					<% }) %> 
+				<% } %>
+			</div>
 		</div>
 		<div class="categories">
 			<p>Sort By:</p>
 		</div>
 	</div>
-	<a href="/populate"></a>
 </body>
 </html>

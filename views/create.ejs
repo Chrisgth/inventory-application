@@ -9,12 +9,25 @@
 <body>
 	<%- include('./partials/nav.ejs') %>
 	<form action="/create" method="POST">
-		<input type="text" id="itemName" name="itemName">
-		<input type="text" id="category" name="category">
-		<input type="text" id="storage_type" name="storage_type">
-		<input type="number" id="price" name="price">
-		<input type="number" id="stock" name="stock">
+		<label for="itemName">Item Name</label>
+		<input type="text" id="itemName" name="itemName" required> 
+		<label for="category">Category</label>
+		<select id="category" name="category" required>
+			<option value="drinks">Drinks</option>
+			<option value="food">Food</option>
+		</select>
+		<label for="storage_type">Storage Type</label>
+		<select id="storage_type" name="storage_type" required>
+			<option value="cold">Cold</option>
+			<option value="dry">Dry</option>
+		</select>
+		<label for="price">Price</label>
+		<input type="number" id="price" name="price" required>
+		<label for="stock">Stock</label>
+		<input type="number" id="stock" name="stock" required>
+		<label for="img">Image url (optional)</label>
 		<input type="text" id="img" name="img">
+
 		<button>Submit</button>
 	</form>
 </body>
