@@ -4,14 +4,14 @@ const create_index_get = (req, res) => {
   res.render("create", { title: "Create Item" });
 };
 
-const create_post = (req, res) => {
+const create_post = (req, res, next) => {
   const item = new Item(req.body);
+  console.log(item)
 
   item
     .save()
     .then((response) => {
-      console.log(response);
-      res.redirect("/create");
+      res.redirect('/create')
     })
     .catch((err) => console.log(err));
 };

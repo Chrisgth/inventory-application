@@ -11,10 +11,14 @@
 	<div>
 		<div class="list">
 			<h2>Items</h2>
-			<div>
+			<div class="items">
 				<% if(items) { %>
 					<% items.map((item) => { %>
-						<h2><%= item.itemName %></h2>
+						<div class="single">
+							<h2><%= item.itemName %></h2>
+							<a class="delete" data-doc="<%= item._id %>">Delete</a>
+							<a class="edit" href="/edit/<%= item._id %>">Edit</a>
+						</div>
 					<% }) %> 
 				<% } %>
 			</div>
@@ -23,5 +27,21 @@
 			<p>Sort By:</p>
 		</div>
 	</div>
+
+	<script defer>
+		const trash = Array.from(document.querySelectorAll('.delete'))
+		const nodes = Array.from(document.querySelectorAll('.single'))
+		trash.forEach((item) => {
+			item.addEventListener('click', (e) => {
+				const endpoint = `/${item.dataset.doc}`
+				fetch(endpoint, {
+					method: 'DELETE',
+				})
+				.then((response) => {
+					nodes[trash.indexOf(item)].remove()
+				})
+				.catch(err => console.log(err))
+		})})
+	</script>
 </body>
 </html>

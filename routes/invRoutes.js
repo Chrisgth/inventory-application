@@ -7,5 +7,7 @@ const invRouter = express.Router();
 invRouter.get("/", invController.inv_index);
 invRouter.get("/create", createController.create_index_get);
 invRouter.post("/create", createController.create_post);
+invRouter.delete('/:id', invController.inv_item_delete)
+invRouter.get('/edit/:id', invController.inv_item_edit)
 
 module.exports = invRouter;
