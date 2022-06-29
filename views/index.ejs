@@ -23,6 +23,14 @@
 		<div class="categories">
 			<p>Sort By:</p>
 		</div>
+		<div class="pages">
+			<% if(pageCount) { %>
+				<% for(let i = 1; i<=pageCount; i++) { %>
+					<a href="/?page=<%= i %>"><%= i %></a>
+				<%}%>
+			<%}%>
+
+		</div>
 	</div>
 
 	<script defer>

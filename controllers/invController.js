@@ -11,23 +11,25 @@ const inv_index = (req, res) => {
   }
 
   if ( isNaN(limit) ) {
-    limit = 5
+    limit = 6
   }
 
   let totalPages = 0
-
-  Item.count()
-    .then((count) => {
-      totalPages = Math.ceil(count/limit)
-    })
 
   const startIndex = (page - 1) * limit
   const endIndex = page * limit
 
   Item.find().limit(limit).skip(startIndex).sort({ createdAt: -1 })
     .then((result) => {
-      console.log(totalPages)
-      res.render("index", { title: "Inventory", items: result, pageCount: totalPages, limit: limit });
+      Item.count()
+      .then((count) => {
+        totalPages = Math.ceil(count/limit)
+        if (totalPages < page) {
+          res.render('404', { title: '404 Not Found' })
+        } else {
+          res.render("index", { title: "Inventory", items: result, pageCount: totalPages, limit: limit });
+        }
+      })
     });
   };
 const inv_item_delete = (req, res) => {
