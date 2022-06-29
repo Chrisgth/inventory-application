@@ -5,7 +5,6 @@ const inv_index = (req, res) => {
     .sort({ createdAt: -1 })
     .then((result) => {
       res.render("index", { title: "Inventory", items: result });
-      console.log(result);
     });
 };
 const inv_item_delete = (req, res) => {
@@ -30,8 +29,19 @@ const inv_item_edit = (req, res) => {
     })
 }
 
+const inv_item_update = (req, res) => {
+  const item = req.body
+
+  Item.findByIdAndUpdate(req.params.id, item)
+    .then((response) => {
+      res.redirect('/')
+    })
+    .catch(err => console.log(err))
+}
+
 module.exports = {
   inv_index,
   inv_item_delete,
-  inv_item_edit
+  inv_item_edit,
+  inv_item_update
 };

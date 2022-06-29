@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%- include('./partials/nav.ejs') %>
-	<form action="/create" method="PUT">
+	<form action="/edit/<%= item._id%>" method="POST">
 		<label for="itemName">Item Name</label>
 		<input type="text" id="itemName" name="itemName" value="<%= item.itemName %>" required> 
 		<label for="category">Category</label>
@@ -50,10 +50,6 @@
 		<input type="text" id="img" name="img" value="<%= item.img %>">
 
 		<button>Submit</button>
-
-		<script>
-			const category = document.getElementById('category')
-			const storage = document.getElementById('storage_type')
-		</script>
+	</form>
 </body>
 </html>
