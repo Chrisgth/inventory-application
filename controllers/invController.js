@@ -22,7 +22,7 @@ const inv_item_edit = (req, res) => {
 
   Item.findById(id)
     .then((response) => {
-      res.render('edit', { item: response })
+      res.render('edit', { item: response, title: 'Edit' })
     })
     .catch((err) => {
       res.render('404', {title: 'Item not found'})
