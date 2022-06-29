@@ -1,6 +1,9 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 a {
@@ -10,18 +13,19 @@ a {
 nav {
   background-color: #002E2C;
   color: #EFF1C5;
-  padding: 1rem;
+  padding: 1rem 0 1rem 0;
   text-align: center;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
+  width: 100%;
 }
 
 nav > a {
   text-decoration: none;
   color: #EFF1C5;
   font-weight: bolder;
+  margin-right: 1rem;
 }
 
 nav > a:hover {
@@ -31,4 +35,31 @@ nav > a:hover {
 #logo {
   margin-right: auto;
   font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+.inventory {
+  width: 80%;
+  box-shadow: 3px 4px 9px 5px rgba(0,0,0,0.09);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 2rem;
+  display: flex;
+}
+
+.inventory:hover {
+  box-shadow: 3px 4px 9px 5px rgba(0,0,0,0.33);
+}
+
+.list {
+  width: 75%;
+}
+
+.categories {
+  border-left: 1px rgba(0,0,0,0.15) solid;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
