@@ -7,16 +7,18 @@
 	<%- include('./partials/nav.ejs') %>
 	<div class="inventory">
 		<div class="list">
-			<h2>Items</h2>
+			<h2>Grocery Store Inventory</h2>
 			<div class="items">
 				<% if(items) { %>
 					<% items.map((item) => { %>
 						<div class="single">
 							<h3><%= item.itemName %></h3>
 							<img src="<%= item.img%>">
-							<p>Goods type: <%= item.storage_type%> <%= item.category %></p>
-							<p>Stock: <%= item.stock %> </p>
-							<p>Price per unit : <%= item.price %>$</p>
+							<div class="info">
+								<p>Goods type: <%= item.storage_type%> <%= item.category %></p>
+								<p>Stock: <%= item.stock %> </p>
+								<p>Price per unit : <%= item.price %>$</p>
+							</div>
 							<div class="btns">
 								<a class="delete" data-doc="<%= item._id %>">
 									<img src="/images/trash.png" alt="">
@@ -29,9 +31,6 @@
 					<% }) %> 
 				<% } %>
 			</div>
-		</div>
-		<div class="categories">
-			<p>Sort By:</p>
 		</div>
 		<div class="pages">
 			<% if(pageCount) { %>
