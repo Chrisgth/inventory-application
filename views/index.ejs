@@ -12,9 +12,19 @@
 				<% if(items) { %>
 					<% items.map((item) => { %>
 						<div class="single">
-							<h2><%= item.itemName %></h2>
-							<a class="delete" data-doc="<%= item._id %>">Delete</a>
-							<a class="edit" href="/edit/<%= item._id %>">Edit</a>
+							<h3><%= item.itemName %></h3>
+							<img src="<%= item.img%>">
+							<p>Goods type: <%= item.storage_type%> <%= item.category %></p>
+							<p>Stock: <%= item.stock %> </p>
+							<p>Price per unit : <%= item.price %>$</p>
+							<div class="btns">
+								<a class="delete" data-doc="<%= item._id %>">
+									<img src="/images/trash.png" alt="">
+								</a>
+								<a class="edit" href="/edit/<%= item._id %>">
+									<img src="/images/pen.png" alt="">
+							</div>
+							</a>
 						</div>
 					<% }) %> 
 				<% } %>
