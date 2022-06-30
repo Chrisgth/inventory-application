@@ -11,8 +11,8 @@ const dbURI = process.env.DB_URI;
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    app.listen(3000);
-    console.log("connected to db and listening on port 3000");
+    app.listen(process.env.PORT || 5000);
+    console.log(`connected to db and listening on port ${process.env.PORT}`);
   })
   .catch((err) => console.log(err));
 
